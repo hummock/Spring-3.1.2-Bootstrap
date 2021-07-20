@@ -19,11 +19,18 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
 
-    @Autowired
     private UserDao userDao;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    public void UserServiceImpl(UserDao userDao) {
+        this.userDao=userDao;
+    }
+
+    @Autowired
+    public void UserServiceImpl(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder=passwordEncoder;
+    }
 
 
     @Override

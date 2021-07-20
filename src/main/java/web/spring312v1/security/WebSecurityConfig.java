@@ -15,8 +15,13 @@ import web.spring312v1.service.UserServiceImpl;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
     private UserServiceImpl userDetailsService;
+
+    @Autowired
+    public void WebSecurityConfig(UserServiceImpl userDetailsService) {
+        this.userDetailsService=userDetailsService;
+    }
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
